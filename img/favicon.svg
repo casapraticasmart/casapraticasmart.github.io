@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#131921"/>
+      <stop offset="100%" stop-color="#232f3e"/>
+    </linearGradient>
+    <linearGradient id="roofGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff9900"/>
+      <stop offset="100%" stop-color="#ffb84d"/>
+    </linearGradient>
+  </defs>
+  <!-- Fundo arredondado estilo App -->
+  <rect width="64" height="64" rx="14" fill="url(#bgGrad)"/>
+  <!-- Ondas Wi-Fi / Smart no topo -->
+  <path d="M24 14 a12 12 0 0 1 16 0" fill="none" stroke="#38bdf8" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M27.5 18 a7 7 0 0 1 9 0" fill="none" stroke="#38bdf8" stroke-width="2.6" stroke-linecap="round"/>
+  <!-- Telhado da Casa -->
+  <path d="M10 33 L32 16 L54 33" fill="none" stroke="url(#roofGrad)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Corpo da Casa -->
+  <path d="M17 31 V50 C17 51.6 18.4 53 20 53 H44 C45.6 53 47 51.6 47 50 V31" fill="#ffffff"/>
+  <!-- Raio Smart / Economia no centro da casa -->
+  <path d="M34 27 L25 39 H32 L30 49 L40 36 H33 Z" fill="#ff9900"/>
+</svg>

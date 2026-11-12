@@ -397,6 +397,7 @@ def gerar_html_guia(tema, produtos_guia, data_str):
   <title>{tema['titulo_seo']}</title>
   <meta name="description" content="{tema['meta_desc']}" />
   <meta name="robots" content="index, follow" />
+  <link rel="icon" type="image/svg+xml" href="../img/favicon.svg" />
   <link rel="stylesheet" href="../styles.css" />
   <script type="application/ld+json">
 {json.dumps(faq_schema, indent=2, ensure_ascii=False)}
