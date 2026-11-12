@@ -411,6 +411,19 @@
     });
 
     const linkAdminFooter = document.getElementById("open-admin-btn");
+    const navAdminBtn = document.getElementById("nav-admin-btn");
+    const params = new URLSearchParams(window.location.search);
+    const ehLocal = ["localhost", "127.0.0.1"].includes(window.location.hostname) || window.location.protocol === "file:";
+    const modoDonoAtivo = ehLocal || params.get("dono") === "1";
+
+    if (modoDonoAtivo) {
+      if (navAdminBtn) navAdminBtn.style.display = "";
+      if (linkAdminFooter) linkAdminFooter.style.display = "";
+      if (params.get("dono") === "1") {
+        ativarAba("tab-admin");
+      }
+    }
+
     if (linkAdminFooter) {
       linkAdminFooter.addEventListener("click", () => {
         ativarAba("tab-admin");
@@ -486,7 +499,8 @@
         const horas = document.getElementById("res-horas").textContent;
         const econ = document.getElementById("res-economia").textContent;
         const payback = document.getElementById("res-payback").textContent;
-        const texto = `Olha que legal essa calculadora de Casa & Cozinha Inteligente! Meu kit ideal economiza *${horas}* e *${econ}* (se paga sozinho em ${payback}). Veja os produtos recomendados aqui: ${window.location.href}`;
+        const urlPublica = window.location.origin + window.location.pathname;
+        const texto = `Olha que legal essa calculadora de Casa & Cozinha Inteligente! Meu kit ideal economiza *${horas}* e *${econ}* (se paga sozinho em ${payback}). Veja os produtos recomendados aqui: ${urlPublica}`;
         window.open(`https://wa.me/?text=${encodeURIComponent(texto)}`, "_blank");
       });
     }
