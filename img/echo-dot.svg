@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+  <defs>
+    <radialGradient id="sphere" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#475569"/>
+      <stop offset="65%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#090d16"/>
+    </radialGradient>
+  </defs>
+  <rect width="300" height="300" fill="#ffffff"/>
+  <ellipse cx="150" cy="252" rx="82" ry="14" fill="#bae6fd"/>
+  <!-- Anel Luminoso Alexa Azul -->
+  <ellipse cx="150" cy="242" rx="68" ry="12" fill="#00d2ff"/>
+  <!-- Esfera Smart Speaker -->
+  <circle cx="150" cy="162" r="84" fill="url(#sphere)"/>
+  <!-- Botões Superiores -->
+  <circle cx="150" cy="96" r="5" fill="#94a3b8" opacity="0.5"/>
+  <text x="122" y="102" font-family="sans-serif" font-size="14" fill="#94a3b8">+</text>
+  <text x="174" y="102" font-family="sans-serif" font-size="14" fill="#94a3b8">−</text>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+  <rect width="300" height="300" fill="#ffffff"/>
+  <ellipse cx="150" cy="264" rx="82" ry="11" fill="#e2e8f0"/>
+  <!-- Corpo Cafeteira -->
+  <rect x="82" y="52" width="124" height="202" rx="12" fill="#1e293b"/>
+  <rect x="88" y="64" width="112" height="65" rx="6" fill="#334155"/>
+  <!-- Jarra de Café -->
+  <rect x="96" y="142" width="96" height="92" rx="10" fill="#bae6fd" opacity="0.35" stroke="#94a3b8" stroke-width="2"/>
+  <rect x="98" y="178" width="92" height="54" rx="8" fill="#451a03"/>
+  <!-- Alça da Jarra -->
+  <path d="M192,152 L216,152 L216,216 L192,216" fill="none" stroke="#0f172a" stroke-width="8" stroke-linecap="round"/>
+  <!-- Visor Digital -->
+  <rect x="124" y="84" width="40" height="18" rx="3" fill="#020617"/>
+  <text x="144" y="97" font-family="monospace" font-size="12" fill="#22c55e" text-anchor="middle">07:00</text>
+</svg>

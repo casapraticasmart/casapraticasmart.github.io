@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+  <rect width="300" height="300" fill="#ffffff"/>
+  <ellipse cx="150" cy="262" rx="68" ry="10" fill="#e2e8f0"/>
+  <!-- Copo Acrílico Transparente -->
+  <path d="M92,135 L208,135 L198,242 C198,255 102,255 102,242 Z" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="3"/>
+  <!-- Lâminas Inox Internas -->
+  <rect x="146" y="140" width="8" height="95" rx="3" fill="#94a3b8"/>
+  <path d="M150,175 L190,165 L186,182 Z" fill="#64748b"/>
+  <path d="M150,205 L110,195 L114,212 Z" fill="#64748b"/>
+  <!-- Tampa Motor USB -->
+  <path d="M88,135 L212,135 L206,75 C206,58 94,58 94,75 Z" fill="#0f766e"/>
+  <rect x="88" y="126" width="124" height="10" fill="#cbd5e1"/>
+  <!-- Botão Superior -->
+  <rect x="130" y="50" width="40" height="12" rx="6" fill="#14b8a6"/>
+  <circle cx="150" cy="98" r="5" fill="#5eead4"/>
+</svg>

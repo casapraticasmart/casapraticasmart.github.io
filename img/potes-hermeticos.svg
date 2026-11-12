@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+  <rect width="300" height="300" fill="#ffffff"/>
+  <ellipse cx="150" cy="264" rx="98" ry="11" fill="#e2e8f0"/>
+  <!-- Pote Alto Esquerdo -->
+  <rect x="64" y="78" width="76" height="178" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="3"/>
+  <rect x="68" y="135" width="68" height="117" rx="5" fill="#fde68a"/>
+  <rect x="60" y="66" width="84" height="16" rx="5" fill="#ffffff" stroke="#94a3b8" stroke-width="2"/>
+  <rect x="88" y="70" width="28" height="8" rx="3" fill="#64748b"/>
+  <!-- Pote Médio Direito Inferior -->
+  <rect x="156" y="168" width="80" height="88" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="3"/>
+  <rect x="160" y="198" width="72" height="54" rx="5" fill="#fca5a5"/>
+  <rect x="152" y="156" width="88" height="16" rx="5" fill="#ffffff" stroke="#94a3b8" stroke-width="2"/>
+  <!-- Pote Médio Direito Superior -->
+  <rect x="156" y="78" width="80" height="72" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="3"/>
+  <rect x="160" y="108" width="72" height="38" rx="5" fill="#86efac"/>
+  <rect x="152" y="66" width="88" height="16" rx="5" fill="#ffffff" stroke="#94a3b8" stroke-width="2"/>
+</svg>

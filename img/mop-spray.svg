@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+  <rect width="300" height="300" fill="#ffffff"/>
+  <ellipse cx="150" cy="265" rx="90" ry="10" fill="#e2e8f0"/>
+  <!-- Base Microfibra -->
+  <polygon points="75,245 225,245 240,262 60,262" fill="#0284c7"/>
+  <polygon points="82,238 218,238 225,248 75,248" fill="#e2e8f0" stroke="#94a3b8"/>
+  <!-- Haste Alumínio -->
+  <line x1="150" y1="30" x2="150" y2="240" stroke="#94a3b8" stroke-width="9" stroke-linecap="round"/>
+  <!-- Reservatório de Água -->
+  <rect x="134" y="135" width="32" height="72" rx="10" fill="#bae6fd" stroke="#0284c7" stroke-width="2"/>
+  <rect x="136" y="158" width="28" height="47" rx="8" fill="#38bdf8" opacity="0.6"/>
+  <!-- Gatilho Cabo -->
+  <path d="M145,30 L168,30 C175,30 175,55 165,55 L150,55" fill="none" stroke="#0f172a" stroke-width="7" stroke-linecap="round"/>
+</svg>

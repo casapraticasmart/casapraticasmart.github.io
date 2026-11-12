@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+  <defs>
+    <radialGradient id="topR" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#475569"/>
+      <stop offset="65%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </radialGradient>
+  </defs>
+  <rect width="300" height="300" fill="#ffffff"/>
+  <ellipse cx="150" cy="248" rx="102" ry="18" fill="#e2e8f0"/>
+  <!-- Escovas laterais -->
+  <line x1="65" y1="210" x2="38" y2="230" stroke="#64748b" stroke-width="3" stroke-linecap="round"/>
+  <line x1="65" y1="210" x2="45" y2="195" stroke="#64748b" stroke-width="3" stroke-linecap="round"/>
+  <line x1="235" y1="210" x2="262" y2="230" stroke="#64748b" stroke-width="3" stroke-linecap="round"/>
+  <line x1="235" y1="210" x2="255" y2="195" stroke="#64748b" stroke-width="3" stroke-linecap="round"/>
+  <!-- Disco principal 3D -->
+  <ellipse cx="150" cy="172" rx="96" ry="74" fill="#0f172a"/>
+  <ellipse cx="150" cy="160" rx="96" ry="74" fill="url(#topR)" stroke="#64748b" stroke-width="1.5"/>
+  <ellipse cx="150" cy="158" rx="82" ry="62" fill="none" stroke="#334155" stroke-width="1.5"/>
+  <!-- Sensor Laser LiDAR -->
+  <circle cx="150" cy="138" r="22" fill="#1e293b" stroke="#94a3b8" stroke-width="2"/>
+  <circle cx="150" cy="138" r="8" fill="#38bdf8"/>
+  <!-- Botão Power LED -->
+  <circle cx="150" cy="192" r="10" fill="#0f172a" stroke="#38bdf8" stroke-width="2"/>
+</svg>

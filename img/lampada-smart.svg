@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+  <defs>
+    <radialGradient id="bulbG" cx="40%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#f0abfc"/>
+      <stop offset="50%" stop-color="#818cf8"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </radialGradient>
+  </defs>
+  <rect width="300" height="300" fill="#ffffff"/>
+  <ellipse cx="150" cy="264" rx="55" ry="9" fill="#e2e8f0"/>
+  <!-- Rosca E27 -->
+  <rect x="128" y="212" width="44" height="38" rx="6" fill="#94a3b8"/>
+  <line x1="128" y1="224" x2="172" y2="224" stroke="#64748b" stroke-width="3"/>
+  <line x1="128" y1="236" x2="172" y2="236" stroke="#64748b" stroke-width="3"/>
+  <path d="M138,250 L162,250 L156,258 L144,258 Z" fill="#1e293b"/>
+  <!-- Corpo Branco Wi-Fi -->
+  <path d="M112,148 L188,148 L172,214 L128,214 Z" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="2"/>
+  <!-- Difusor RGB LED -->
+  <circle cx="150" cy="118" r="56" fill="url(#bulbG)"/>
+</svg>

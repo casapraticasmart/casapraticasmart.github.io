@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+  <defs>
+    <linearGradient id="bodyG" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#334155"/>
+      <stop offset="50%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </linearGradient>
+    <linearGradient id="inox" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#cbd5e1"/>
+      <stop offset="50%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#94a3b8"/>
+    </linearGradient>
+  </defs>
+  <rect width="300" height="300" fill="#ffffff"/>
+  <ellipse cx="150" cy="268" rx="82" ry="12" fill="#e2e8f0"/>
+  <!-- Corpo da Airfryer -->
+  <path d="M82,55 C82,36 218,36 218,55 L230,235 C230,255 70,255 70,235 Z" fill="url(#bodyG)"/>
+  <!-- Faixa Inox -->
+  <rect x="74" y="138" width="152" height="10" fill="url(#inox)"/>
+  <!-- Painel Digital Touch -->
+  <rect x="112" y="62" width="76" height="48" rx="10" fill="#020617" stroke="#475569" stroke-width="1.5"/>
+  <text x="150" y="88" font-family="sans-serif" font-size="18" font-weight="bold" fill="#38bdf8" text-anchor="middle">200°C</text>
+  <circle cx="128" cy="100" r="3" fill="#38bdf8"/>
+  <circle cx="150" cy="100" r="3" fill="#22c55e"/>
+  <circle cx="172" cy="100" r="3" fill="#38bdf8"/>
+  <!-- Cesto e Puxador -->
+  <path d="M74,148 L226,148 L222,235 C222,250 78,250 78,235 Z" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <rect x="136" y="155" width="28" height="82" rx="12" fill="url(#inox)"/>
+  <rect x="142" y="164" width="16" height="64" rx="6" fill="#0f172a"/>
+</svg>

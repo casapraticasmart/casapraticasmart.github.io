@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+  <defs>
+    <linearGradient id="steel" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#94a3b8"/>
+      <stop offset="45%" stop-color="#f1f5f9"/>
+      <stop offset="100%" stop-color="#64748b"/>
+    </linearGradient>
+  </defs>
+  <rect width="300" height="300" fill="#ffffff"/>
+  <ellipse cx="150" cy="265" rx="88" ry="12" fill="#e2e8f0"/>
+  <!-- Alças Laterais -->
+  <rect x="52" y="115" width="24" height="18" rx="6" fill="#0f172a"/>
+  <rect x="224" y="115" width="24" height="18" rx="6" fill="#0f172a"/>
+  <!-- Corpo Inox -->
+  <rect x="72" y="95" width="156" height="150" rx="8" fill="url(#steel)" stroke="#64748b"/>
+  <!-- Base e Tampa Preta -->
+  <path d="M72,225 L228,225 L224,255 L76,255 Z" fill="#0f172a"/>
+  <path d="M74,95 C74,62 226,62 226,95 Z" fill="#0f172a"/>
+  <rect x="130" y="52" width="40" height="16" rx="6" fill="#334155"/>
+  <!-- Painel Digital Frontal -->
+  <rect x="106" y="128" width="88" height="74" rx="8" fill="#0f172a" stroke="#334155" stroke-width="2"/>
+  <rect x="122" y="142" width="56" height="24" rx="4" fill="#020617"/>
+  <text x="150" y="159" font-family="monospace" font-size="16" font-weight="bold" fill="#ef4444" text-anchor="middle">00:30</text>
+  <circle cx="130" cy="182" r="5" fill="#475569"/>
+  <circle cx="150" cy="182" r="5" fill="#475569"/>
+  <circle cx="170" cy="182" r="5" fill="#475569"/>
+</svg>

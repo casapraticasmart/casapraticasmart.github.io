@@ -1,0 +1,32 @@
+name: Robô Diário de Ofertas (Piloto Automático)
+
+on:
+  schedule:
+    # Roda sozinho todos os dias às 07:00 e às 18:00 (horário de Brasília aprox.)
+    - cron: '0 10,21 * * *'
+  workflow_dispatch: # Permite rodar com 1 clique pelo celular se quiser
+
+jobs:
+  atualizar-catalogo:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Baixar código do site
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Executar Robô Buscador de Ofertas
+        run: python robo_ofertas.py
+
+      - name: Publicar Ofertas Atualizadas no Site
+        run: |
+          git config user.name "Robo de Ofertas Automatico"
+          git config user.email "robo@casapraticasmart.local"
+          git add produtos.js guias/ sitemap.xml robots.txt
+          git diff --staged --quiet || git commit -m "chore: atualizacao automatica de ofertas e paginas SEO do dia"
+          git push

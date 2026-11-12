@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Casa Prática & Smart | Calculadora de Economia e Achadinhos</title>
+  <meta name="description" content="Descubra quais itens de cozinha e casa inteligente economizam horas da sua semana e se pagam sozinhos reduzindo gastos com delivery." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- HEADER VAREJO (PROPORÇÃO AMAZON / MERCADO LIVRE) -->
+  <header class="hero">
+    <div class="container header-top-bar">
+      <div class="brand-area">
+        <span class="brand-logo">CASA SMART</span>
+        <div>
+          <h1>Casa Prática & Smart</h1>
+          <p>Comparador de Economia Doméstica & Ofertas Verificadas</p>
+        </div>
+      </div>
+      <div style="font-size: 0.78rem; color: #ddd;">
+        🔍 Valores médios de referência · Clique para checar o preço ao vivo nas lojas oficiais
+      </div>
+    </div>
+    <div class="header-sub-bar">
+      <div class="container">
+        <nav class="nav-tabs" aria-label="Modos da ferramenta">
+          <button class="tab-btn active" data-tab="tab-planejador">🧭 Monte Seu Kit Ideal</button>
+          <button class="tab-btn" data-tab="tab-calculadora">🧮 Calculadora: Delivery vs. Casa</button>
+          <button class="tab-btn" data-tab="tab-vitrine">🔥 Ofertas do Dia</button>
+          <button class="tab-btn" data-tab="tab-guias">📚 Comparativos (Google SEO)</button>
+          <button class="tab-btn" data-tab="tab-admin">⚙️ Painel do Dono</button>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="container main-content">
+
+    <!-- ABA 1: PLANEJADOR / QUIZ PERSONALIZADO -->
+    <section id="tab-planejador" class="panel active">
+      <div class="panel-header">
+        <h2>🧭 Monte seu Kit de Casa & Cozinha em 3 Passos</h2>
+        <p>Selecione sua rotina abaixo e veja exatamente os produtos que mais economizam tempo e dinheiro para o seu perfil.</p>
+      </div>
+
+      <div class="quiz-grid">
+        <div class="field-group">
+          <label for="quiz-perfil">1. Como é a sua casa hoje?</label>
+          <select id="quiz-perfil">
+            <option value="casal">Casal (rotina corrida)</option>
+            <option value="sozinho">Moro sozinho(a)</option>
+            <option value="familia">Família com filhos</option>
+            <option value="pets">Casa com Pets (cães/gatos)</option>
+          </select>
+        </div>
+
+        <div class="field-group">
+          <label for="quiz-objetivo">2. O que mais toma o seu tempo?</label>
+          <select id="quiz-objetivo">
+            <option value="tempo-cozinha">Cozinhar e lavar louça todo dia</option>
+            <option value="limpeza-automatica">Varrer, aspirar e passar pano</option>
+            <option value="economia-delivery">Gasto muito com iFood/Delivery por cansaço</option>
+            <option value="casa-smart">Automatizar luzes, tomadas e rotina</option>
+            <option value="organizacao">Organizar geladeira e despensa</option>
+          </select>
+        </div>
+
+        <div class="field-group">
+          <label for="quiz-orcamento">3. Qual seu foco de orçamento?</label>
+          <select id="quiz-orcamento">
+            <option value="custo-beneficio">Melhor Custo-Benefício (Recomendado)</option>
+            <option value="economico">Achadinhos Baratos (Baixo investimento)</option>
+            <option value="completo">Kit Completo / Upgrade Total</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Resumo de Economia do Kit -->
+      <div class="results-summary">
+        <div class="metric-card">
+          <div class="metric-label">Tempo Livre Ganho</div>
+          <div class="metric-number" id="res-horas">0h / sem</div>
+        </div>
+        <div class="metric-card green">
+          <div class="metric-label">Economia Estimada</div>
+          <div class="metric-number" id="res-economia">R$ 0 / mês</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Investimento Total do Kit</div>
+          <div class="metric-number" id="res-investimento">R$ 0</div>
+        </div>
+        <div class="metric-card green">
+          <div class="metric-label">O Kit se paga em</div>
+          <div class="metric-number" id="res-payback">~1.5 meses</div>
+        </div>
+      </div>
+
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom: 16px;">
+        <h3 style="font-size: 1.2rem;">👇 Produtos Recomendados para o seu Perfil:</h3>
+        <button type="button" id="btn-share-whats-quiz" class="btn-primary" style="background:#16a34a; padding:10px 16px; font-size:0.88rem;">📲 Enviar este Kit / Economia no WhatsApp</button>
+      </div>
+      <div id="quiz-results-grid" class="products-grid"></div>
+    </section>
+
+    <!-- ABA 2: CALCULADORA DE RETORNO (DELIVERY VS COZINHA INTELIGENTE) -->
+    <section id="tab-calculadora" class="panel">
+      <div class="panel-header">
+        <h2>🧮 Calculadora: Em quantos dias sua Cozinha Inteligente se paga?</h2>
+        <p>Descubra quanto você gasta no ano pedindo delivery por cansaço e veja em quantos dias os equipamentos certos pagam a si mesmos.</p>
+      </div>
+
+      <div class="quiz-grid">
+        <div class="field-group">
+          <label for="calc-pedidos">Quantas vezes por semana você pede delivery por falta de tempo?</label>
+          <input type="range" id="calc-pedidos" min="1" max="10" value="3" style="width:100%" />
+          <div class="range-value" id="val-pedidos">3x por semana</div>
+        </div>
+
+        <div class="field-group">
+          <label for="calc-ticket">Valor médio de cada pedido (R$)</label>
+          <input type="range" id="calc-ticket" min="30" max="180" step="5" value="65" style="width:100%" />
+          <div class="range-value" id="val-ticket">R$ 65</div>
+        </div>
+
+        <div class="field-group">
+          <label for="calc-faxina">Horas gastas por semana limpando casa e cozinha</label>
+          <input type="range" id="calc-faxina" min="2" max="20" step="1" value="8" style="width:100%" />
+          <div class="range-value" id="val-faxina">8h por semana</div>
+        </div>
+      </div>
+
+      <div class="results-summary">
+        <div class="metric-card">
+          <div class="metric-label">Seu Gasto Mensal c/ Delivery</div>
+          <div class="metric-number" id="roi-gasto-atual">R$ 838</div>
+        </div>
+        <div class="metric-card green">
+          <div class="metric-label">Economia Anual c/ Cozinha Prática</div>
+          <div class="metric-number" id="roi-economia-ano">R$ 6.036</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Horas Recuperadas no Ano</div>
+          <div class="metric-number" id="roi-horas-ano">228 horas/ano</div>
+        </div>
+        <div class="metric-card green">
+          <div class="metric-label">Este Kit se paga sozinho em</div>
+          <div class="metric-number" id="roi-dias-payback">45 dias</div>
+        </div>
+      </div>
+
+      <h3 style="margin-bottom: 16px; font-size: 1.2rem;">🏆 Os 4 Campeões que Mais Economizam Dinheiro e Tempo:</h3>
+      <div id="calc-results-grid" class="products-grid"></div>
+    </section>
+
+    <!-- ABA 3: VITRINE COMPLETA DE ACHADINHOS -->
+    <section id="tab-vitrine" class="panel">
+      <div class="panel-header">
+        <h2>🔥 Vitrine Completa de Achadinhos & Casa Inteligente</h2>
+        <p>Filtre por categoria ou pesquise o item que você procura com os melhores links verificados na Amazon, Mercado Livre e Shopee.</p>
+      </div>
+
+      <div class="filters-bar">
+        <div class="category-pills">
+          <button class="pill-btn active" data-cat="todas">Todos</button>
+          <button class="pill-btn" data-cat="cozinha">🍳 Cozinha Prática</button>
+          <button class="pill-btn" data-cat="limpeza">🧹 Limpeza sem Esforço</button>
+          <button class="pill-btn" data-cat="smart">💡 Casa Inteligente (Alexa)</button>
+          <button class="pill-btn" data-cat="organizacao">📦 Organização</button>
+          <button class="pill-btn" data-cat="achadinhos">⚡ Achadinhos Baratos</button>
+        </div>
+
+        <input type="search" id="busca-vitrine" class="search-input" placeholder="🔍 Buscar produto (ex: airfryer, robô...)" />
+      </div>
+
+      <div id="vitrine-grid" class="products-grid"></div>
+    </section>
+
+    <!-- ABA 4: PÁGINAS COMPARATIVAS AUTOMÁTICAS PARA O GOOGLE (SEO PROGRAMÁTICO) -->
+    <section id="tab-guias" class="panel">
+      <div class="panel-header">
+        <h2>📚 Guias & Comparativos Otimizados para o Google (SEO Automático)</h2>
+        <p>Cada página abaixo é um arquivo HTML estático real gerado automaticamente pelo robô (com Tabelas Comparativas, Schema FAQ para o Google e Sitemap XML) para atrair visitantes gratuitos que pesquisam dúvidas de compra no Google.</p>
+      </div>
+
+      <div id="guias-seo-grid" class="quiz-grid"></div>
+    </section>
+
+    <!-- ABA 4: PAINEL DO DONO (GERENCIAMENTO SEM CÓDIGO) -->
+    <section id="tab-admin" class="panel">
+      <div class="panel-header">
+        <h2>⚙️ Painel do Dono — Alimente seus Links sem Programar</h2>
+        <p>Cadastre novos produtos em segundos fora do seu horário de trabalho. Depois, basta clicar em <strong>"Baixar produtos.js Atualizado"</strong> para publicar.</p>
+      </div>
+
+      <!-- Central do Robô Buscador Automático -->
+      <div class="field-group" style="margin-bottom: 24px; background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%); border-color: #6ee7b7;">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:12px;">
+          <div>
+            <h3 style="color:#065f46; font-size:1.15rem; margin-bottom:4px;">🤖 Robô Buscador de Ofertas do Dia (Modo 100% Automático)</h3>
+            <p style="color:#047857; font-size:0.9rem;">O robô busca automaticamente os produtos mais vendidos de Casa & Cozinha, atualiza preços/fotos e injeta seus códigos de afiliado em todos os links.</p>
+          </div>
+          <span id="status-robo-badge" style="background:#059669; color:#fff; padding:6px 12px; border-radius:999px; font-size:0.8rem; font-weight:700;">Pronto para rodar</span>
+        </div>
+
+        <div class="admin-form-grid" style="margin-bottom:12px;">
+          <div>
+            <label for="admin-amazon-tag">🎯 Tag Associado Amazon</label>
+            <input type="text" id="admin-amazon-tag" placeholder="Ex: seunome-20" />
+          </div>
+          <div>
+            <label for="admin-ml-tag">⚡ ID Afiliado Mercado Livre (opcional)</label>
+            <input type="text" id="admin-ml-tag" placeholder="Ex: seu_apelido_ml" />
+          </div>
+          <div>
+            <label for="admin-shopee-tag">🛍️ ID Afiliado Shopee (opcional)</label>
+            <input type="text" id="admin-shopee-tag" placeholder="Ex: 123456789" />
+          </div>
+        </div>
+
+        <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+          <button type="button" id="btn-disparar-robo" class="btn-primary" style="background:#059669;">🚀 Disparar Robô Agora (Atualizar 12 Ofertas do Dia)</button>
+          <button type="button" id="btn-salvar-tag" class="btn-secondary">Salvar Apenas Minhas Tags</button>
+        </div>
+        <small id="msg-retorno-robo" style="color:#065f46; display:block; margin-top:8px; font-weight:600;">
+          💡 Dica: Quando publicado no GitHub, o arquivo <code>.github/workflows/atualizar_ofertas.yml</code> roda esse robô sozinho na nuvem às 07h e às 18h mesmo com seu PC desligado!
+        </small>
+      </div>
+
+      <!-- Importador de Produto Exato por Link Direto -->
+      <div class="field-group" style="margin-bottom: 24px; background: #eff6ff; border-color: #93c5fd;">
+        <h3 style="color:#1e3a8a; font-size:1.05rem; margin-bottom:4px;">🔗 Colar Link Direto de Produto (Puxa Nome, Preço Real e Foto Automaticamente)</h3>
+        <p style="color:#1d4ed8; font-size:0.85rem; margin-bottom:10px;">Quer que o botão leve diretamente para a página de um produto específico (sem passar pela busca) e mostre o mesmo preço da página? Cole a URL do produto abaixo:</p>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <input type="url" id="input-importar-url" placeholder="Cole aqui o link direto do produto na Amazon ou Mercado Livre..." style="flex:1; min-width:280px;" />
+          <button type="button" id="btn-importar-url" class="btn-primary">⚡ Capturar Produto Exato</button>
+        </div>
+        <small id="msg-importar-url" style="display:block; margin-top:6px; color:#1e40af; font-weight:600;"></small>
+      </div>
+
+      <!-- Formulário para Novo Produto -->
+      <form id="form-novo-produto">
+        <h3 style="margin-bottom: 14px;">➕ Adicionar Novo Produto / Achadinho</h3>
+        <div class="admin-form-grid">
+          <div class="field-group">
+            <label for="adm-nome">Nome do Produto *</label>
+            <input type="text" id="adm-nome" required placeholder="Ex: Cafeteira Prensa Francesa Inox" />
+          </div>
+          <div class="field-group">
+            <label for="adm-categoria">Categoria *</label>
+            <select id="adm-categoria">
+              <option value="cozinha">Cozinha Prática</option>
+              <option value="limpeza">Limpeza sem Esforço</option>
+              <option value="smart">Casa Inteligente</option>
+              <option value="organizacao">Organização</option>
+              <option value="achadinhos">Achadinhos Baratos</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label for="adm-objetivo">Objetivo Principal na Calculadora *</label>
+            <select id="adm-objetivo">
+              <option value="tempo-cozinha">Economizar tempo na cozinha</option>
+              <option value="limpeza-automatica">Limpeza automática</option>
+              <option value="economia-delivery">Reduzir gasto com delivery</option>
+              <option value="casa-smart">Automatizar a casa</option>
+              <option value="organizacao">Organizar geladeira/casa</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label for="adm-badge">Selo de Destaque</label>
+            <input type="text" id="adm-badge" placeholder="Ex: Campeão de Vendas / -35% OFF" />
+          </div>
+          <div class="field-group">
+            <label for="adm-preco">Preço Médio Estimado (R$) *</label>
+            <input type="number" id="adm-preco" required value="99" />
+          </div>
+          <div class="field-group">
+            <label for="adm-horas">Horas Economizadas / Semana</label>
+            <input type="number" step="0.5" id="adm-horas" value="2" />
+          </div>
+          <div class="field-group">
+            <label for="adm-economia">Economia Estimada / Mês (R$)</label>
+            <input type="number" id="adm-economia" value="120" />
+          </div>
+          <div class="field-group">
+            <label for="adm-imagem">URL da Foto do Produto</label>
+            <input type="url" id="adm-imagem" placeholder="Cole o endereço da imagem da Amazon/ML" />
+          </div>
+          <div class="field-group">
+            <label for="adm-amz">Seu Link de Afiliado Amazon</label>
+            <input type="url" id="adm-amz" placeholder="https://amzn.to/... ou link completo" />
+          </div>
+          <div class="field-group">
+            <label for="adm-ml">Seu Link de Afiliado Mercado Livre</label>
+            <input type="url" id="adm-ml" placeholder="https://mercadolivre.com/sec/..." />
+          </div>
+          <div class="field-group">
+            <label for="adm-shopee">Seu Link de Afiliado Shopee</label>
+            <input type="url" id="adm-shopee" placeholder="https://s.shopee.com.br/..." />
+          </div>
+          <div class="field-group">
+            <label for="adm-descricao">Benefício Curto (Por que vale a pena?)</label>
+            <input type="text" id="adm-descricao" placeholder="Ex: Faz café encorpado em 3 minutos sem filtro de papel." />
+          </div>
+        </div>
+
+        <div class="admin-actions">
+          <button type="submit" class="btn-primary">✅ Adicionar Produto ao Catálogo</button>
+          <button type="button" id="btn-exportar-js" class="btn-secondary">💾 Baixar arquivo produtos.js Atualizado</button>
+          <button type="button" id="btn-resetar-catalogo" class="btn-secondary">🔄 Restaurar Catálogo Inicial</button>
+        </div>
+      </form>
+
+      <!-- Tabela de Produtos Atuais -->
+      <h3 style="margin-top: 32px;">📋 Produtos Cadastrados (<span id="count-produtos"></span>)</h3>
+      <div style="overflow-x:auto;">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Produto</th>
+              <th>Categoria</th>
+              <th>Preço Ref.</th>
+              <th>Links Ativos</th>
+              <th>Ação</th>
+            </tr>
+          </thead>
+          <tbody id="admin-tbody"></tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>Participamos do Programa de Associados da Amazon, Programa de Afiliados do Mercado Livre e Shopee. Ao comprar pelos links, você apoia nossa ferramenta sem pagar nada a mais por isso.</p>
+      <button id="open-admin-btn" class="footer-admin-link">Gerenciar Catálogo (Modo Dono)</button>
+    </div>
+  </footer>
+
+  <script src="produtos.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
