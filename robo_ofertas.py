@@ -1,4 +1,5 @@
 import json
+import os
 import re
 import html
 import urllib.parse
@@ -454,6 +455,7 @@ def executar_robo(quantidade=12, tentar_api_ao_vivo=False):
         f"window.CATALOGO_INICIAL = {json.dumps(catalogo_gerado, indent=2, ensure_ascii=False)};\n"
     )
     PRODUTOS_JS_PATH.write_text(conteudo_js, encoding="utf-8")
+    disparar_oferta_telegram(catalogo_gerado, cfg)
     return {
         "sucesso": True,
         "atualizadoEm": agora_str,
@@ -463,6 +465,84 @@ def executar_robo(quantidade=12, tentar_api_ao_vivo=False):
         "produtos": catalogo_gerado,
         "config": cfg
     }
+
+
+def disparar_oferta_telegram(catalogo, cfg):
+    """Envia automaticamente a Oferta da Rodada para o Canal do Telegram se configurado."""
+    if not catalogo:
+        return False
+
+    secret_path = BASE_DIR / "telegram_secret.json"
+    local_secret = {}
+    if secret_path.exists():
+        try:
+            local_secret = json.loads(secret_path.read_text(encoding="utf-8"))
+        except Exception:
+            local_secret = {}
+
+    bot_token = (
+        os.environ.get("TELEGRAM_BOT_TOKEN")
+        or local_secret.get("bot_token")
+        or ""
+    ).strip()
+    chat_id = (
+        os.environ.get("TELEGRAM_CHAT_ID")
+        or local_secret.get("chat_id")
+        or cfg.get("telegram_canal")
+        or ""
+    ).strip()
+
+    if not bot_token or not chat_id:
+        return False
+
+    # Rotaciona automaticamente o produto do turno (manhã / noite) pelo dia do ano
+    agora = datetime.now()
+    indice_turno = (agora.timetuple().tm_yday * 2 + (1 if agora.hour >= 14 else 0)) % len(catalogo)
+    p = catalogo[indice_turno]
+
+    nome = html.escape(p["nome"])
+    desc = html.escape(p.get("descricao", ""))
+    preco_atual = p["precoEstimado"]
+    preco_antigo = p["precoAntigo"]
+    desconto = p["descontoPct"]
+    horas = p["horasEconomizadasSemana"]
+    econ = p["economiaMensalReais"]
+    link_amz = html.escape(p.get("linkAmazon", ""))
+    link_ml = html.escape(p.get("linkMercadoLivre", ""))
+
+    mensagem = (
+        f"🔥 <b>{p.get('badge', 'OFERTA DO DIA')}: {nome}</b>\n\n"
+        f"❌ Preço comum de referência: ~R$ {preco_antigo}~\n"
+        f"✅ <b>Faixa média em oferta: ~R$ {preco_atual}</b> <i>(até {desconto}% menor)</i>\n\n"
+        f"⏱ <b>Retorno real:</b> Economiza <b>{horas}h/semana</b> e cerca de <b>R$ {econ}/mês</b>\n"
+        f"💡 <i>{desc}</i>\n\n"
+        f"🔍 <b>Consultar preço de hoje nas lojas oficiais:</b>\n"
+        f"🛒 <a href=\"{link_amz}\">Abrir oferta na Amazon</a>\n"
+        f"⚡ <a href=\"{link_ml}\">Abrir oferta no Mercado Livre</a>\n\n"
+        f"🧭 <a href=\"https://casapraticasmart.github.io/\">Simular Kit Ideal na Calculadora</a>"
+    )
+
+    url_api = f"https://api.telegram.org/bot{bot_token}/sendMessage"
+    payload = json.dumps({
+        "chat_id": chat_id,
+        "text": mensagem,
+        "parse_mode": "HTML",
+        "disable_web_page_preview": False
+    }).encode("utf-8")
+
+    try:
+        req = urllib.request.Request(
+            url_api,
+            data=payload,
+            headers={"Content-Type": "application/json; charset=utf-8"},
+            method="POST"
+        )
+        with urllib.request.urlopen(req, timeout=10) as resp:
+            print(f"[TELEGRAM] Oferta publicada no canal {chat_id} (status {resp.status})!")
+            return True
+    except Exception as e:
+        print(f"[TELEGRAM AVISO] Nao foi possivel enviar ao Telegram: {e}")
+        return False
 
 
 if __name__ == "__main__":
