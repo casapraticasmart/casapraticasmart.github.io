@@ -7,6 +7,7 @@
   <title>Casa Prática & Smart | Calculadora de Economia e Achadinhos</title>
   <meta name="description" content="Descubra quais itens de cozinha e casa inteligente economizam horas da sua semana e se pagam sozinhos reduzindo gastos com delivery." />
   <link rel="icon" type="image/svg+xml" href="img/favicon.svg" />
+  <link rel="alternate" type="application/rss+xml" title="Casa Prática & Smart — Feed Automático de Ofertas" href="feed.xml" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -239,6 +240,41 @@
           <button type="button" id="btn-importar-url" class="btn-primary">⚡ Capturar Produto Exato</button>
         </div>
         <small id="msg-importar-url" style="display:block; margin-top:6px; color:#1e40af; font-weight:600;"></small>
+      </div>
+
+      <!-- Gerador Automático de Textos de Ofertas (WhatsApp / Telegram / Pinterest) + Feed RSS -->
+      <div class="field-group" style="margin-bottom: 24px; background: #fffbeb; border-color: #fcd34d;">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:10px;">
+          <div>
+            <h3 style="color:#92400e; font-size:1.05rem; margin-bottom:4px;">📲 Gerador Automático de Posts de Ofertas + Feed RSS (WhatsApp / Telegram / Pinterest)</h3>
+            <p style="color:#b45309; font-size:0.85rem;">Copie textos prontos de alta conversão com seus links comissionados em 1 clique, ou conecte o <code>feed.xml</code> para postagem 100% automática no Pinterest/Telegram.</p>
+          </div>
+          <a href="feed.xml" target="_blank" class="btn-secondary" style="text-decoration:none; font-size:0.8rem;">📡 Abrir Feed RSS (feed.xml)</a>
+        </div>
+
+        <div class="admin-form-grid" style="margin-bottom:10px;">
+          <div>
+            <label for="gerador-produto-select">1. Escolha o Produto (ou Resumo Top 3)</label>
+            <select id="gerador-produto-select"></select>
+          </div>
+          <div>
+            <label for="gerador-canal-select">2. Formato da Rede Social</label>
+            <select id="gerador-canal-select">
+              <option value="whatsapp">🟢 WhatsApp (Status / Grupos de Ofertas)</option>
+              <option value="telegram">✈️ Canal do Telegram (Com Chamada Direta)</option>
+              <option value="pinterest">📌 Pinterest (Título + Descrição SEO para Pin)</option>
+            </select>
+          </div>
+        </div>
+
+        <textarea id="gerador-texto-output" rows="8" style="width:100%; padding:10px; border:1px solid #f59e0b; border-radius:6px; font-family:inherit; font-size:0.88rem; background:#ffffff; margin-bottom:10px;"></textarea>
+
+        <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+          <button type="button" id="btn-copiar-post" class="btn-primary">📋 Copiar Texto Pronto</button>
+          <button type="button" id="btn-enviar-whats-post" class="btn-secondary" style="background:#16a34a; color:#fff; border-color:#15803d;">🟢 Mandar Direto no WhatsApp</button>
+          <button type="button" id="btn-sortear-oferta" class="btn-secondary">🎲 Sortear Outra Oferta</button>
+          <span id="msg-copiar-post" style="color:#065f46; font-size:0.85rem; font-weight:700;"></span>
+        </div>
       </div>
 
       <!-- Formulário para Novo Produto -->

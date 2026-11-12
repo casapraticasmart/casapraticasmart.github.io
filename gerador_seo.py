@@ -1,5 +1,7 @@
 import json
-from datetime import datetime
+import html as html_lib
+from datetime import datetime, timezone
+from email.utils import format_datetime
 from pathlib import Path
 
 BASE_DIR = Path(__file__).parent
@@ -505,5 +507,63 @@ def gerar_todas_paginas_seo(produtos, dominio_base="https://casapraticasmart.git
 
     robots_txt = f"User-agent: *\nAllow: /\nSitemap: {dominio_base}/sitemap.xml\n"
     (BASE_DIR / "robots.txt").write_text(robots_txt, encoding="utf-8")
+
+    # Gera Feed RSS 2.0 automático (feed.xml) para Pinterest Auto-Publish, Telegram e agregadores
+    pub_date = format_datetime(datetime.now(timezone.utc))
+    rss_items = []
+
+    for p in produtos:
+        nome_esc = html_lib.escape(p.get("nome", "Oferta Casa Inteligente"))
+        preco_atual = p.get("precoEstimado", 99)
+        preco_antigo = p.get("precoAntigo", int(preco_atual * 1.3))
+        econ_mes = p.get("economiaMensalReais", 120)
+        horas_sem = p.get("horasEconomizadasSemana", 2.5)
+        link_amz = html_lib.escape(p.get("linkAmazon") or f"{dominio_base}/index.html")
+        img_url = f"{dominio_base}/{p.get('imagem', 'img/airfryer.svg').lstrip('/')}"
+        desc_texto = (
+            f"🔥 Faixa média em oferta: ~R$ {preco_atual} (ref. até R$ {preco_antigo}). "
+            f"Economiza ~{horas_sem}h/semana e até R$ {econ_mes}/mês no orçamento doméstico. "
+            f"{p.get('descricao', '')}"
+        )
+        desc_esc = html_lib.escape(desc_texto)
+        guid_id = html_lib.escape(f"{dominio_base}/#oferta-{p.get('id', 'item')}")
+        rss_items.append(
+            f"    <item>\n"
+            f"      <title>{nome_esc} (~R$ {preco_atual})</title>\n"
+            f"      <link>{link_amz}</link>\n"
+            f"      <guid isPermaLink=\"false\">{guid_id}</guid>\n"
+            f"      <pubDate>{pub_date}</pubDate>\n"
+            f"      <description>{desc_esc}</description>\n"
+            f"      <enclosure url=\"{html_lib.escape(img_url)}\" type=\"image/svg+xml\" length=\"4096\" />\n"
+            f"    </item>"
+        )
+
+    for g in guias_gerados:
+        titulo_esc = html_lib.escape(g["titulo"])
+        url_guia = f"{dominio_base}/{g['url_relativa']}"
+        resumo_esc = html_lib.escape(f"{g['resumo']} Veredito: {g['veredito']}")
+        rss_items.append(
+            f"    <item>\n"
+            f"      <title>{titulo_esc}</title>\n"
+            f"      <link>{url_guia}</link>\n"
+            f"      <guid isPermaLink=\"true\">{url_guia}</guid>\n"
+            f"      <pubDate>{pub_date}</pubDate>\n"
+            f"      <description>{resumo_esc}</description>\n"
+            f"    </item>"
+        )
+
+    feed_xml = (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<rss version="2.0">\n'
+        '  <channel>\n'
+        '    <title>Casa Prática &amp; Smart — Ofertas e Comparativos</title>\n'
+        f'    <link>{dominio_base}/</link>\n'
+        '    <description>Curadoria automática de Casa e Cozinha Inteligente, Calculadoras de Economia e Ofertas Verificadas.</description>\n'
+        '    <language>pt-br</language>\n'
+        f'    <lastBuildDate>{pub_date}</lastBuildDate>\n'
+        + "\n".join(rss_items)
+        + "\n  </channel>\n</rss>\n"
+    )
+    (BASE_DIR / "feed.xml").write_text(feed_xml, encoding="utf-8")
 
     return guias_gerados

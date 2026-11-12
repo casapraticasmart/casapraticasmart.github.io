@@ -392,6 +392,50 @@
         atualizarTudo();
       }
     });
+
+    const selProdGerador = document.getElementById("gerador-produto-select");
+    const selCanalGerador = document.getElementById("gerador-canal-select");
+    const txtOutGerador = document.getElementById("gerador-texto-output");
+    const msgCopiarPost = document.getElementById("msg-copiar-post");
+
+    if (selProdGerador && selCanalGerador && txtOutGerador) {
+      const regerar = () => {
+        txtOutGerador.value = gerarTextoOfertaSocial(selProdGerador.value, selCanalGerador.value);
+      };
+      selProdGerador.addEventListener("change", regerar);
+      selCanalGerador.addEventListener("change", regerar);
+
+      const btnCopiarPost = document.getElementById("btn-copiar-post");
+      if (btnCopiarPost) {
+        btnCopiarPost.addEventListener("click", () => {
+          navigator.clipboard.writeText(txtOutGerador.value);
+          if (msgCopiarPost) {
+            msgCopiarPost.textContent = "✅ Copiado! Só colar.";
+            setTimeout(() => {
+              msgCopiarPost.textContent = "";
+            }, 3000);
+          }
+        });
+      }
+
+      const btnWhatsPost = document.getElementById("btn-enviar-whats-post");
+      if (btnWhatsPost) {
+        btnWhatsPost.addEventListener("click", () => {
+          window.open(`https://wa.me/?text=${encodeURIComponent(txtOutGerador.value)}`, "_blank");
+        });
+      }
+
+      const btnSortear = document.getElementById("btn-sortear-oferta");
+      if (btnSortear) {
+        btnSortear.addEventListener("click", () => {
+          if (produtos.length > 0) {
+            const rnd = Math.floor(Math.random() * produtos.length);
+            selProdGerador.value = String(rnd);
+            regerar();
+          }
+        });
+      }
+    }
   }
 
   function configurarAbas() {
@@ -456,12 +500,71 @@
       .join("");
   }
 
+  function gerarTextoOfertaSocial(indiceOuModo, canal) {
+    const urlSite = "https://casapraticasmart.github.io/";
+    if (indiceOuModo === "top3") {
+      const top3 = produtos.slice(0, 3);
+      const blocos = top3.map((p, i) => {
+        const link = formatarLinkAmazon(p.linkAmazon) || p.linkMercadoLivre || urlSite;
+        const precoAntigo = p.precoAntigo || Math.round((p.precoEstimado || 99) * 1.3);
+        return `${i + 1}️⃣ *${p.nome}*\n   ❌ Ref. até ~R$ ${precoAntigo}~ → 🔥 *~R$ ${p.precoEstimado}*\n   ⏱ Economiza ${p.horasEconomizadasSemana || 2}h/sem | 👉 ${link}`;
+      });
+      return `🔥 *TOP 3 ACHADINHOS DE CASA & COZINHA DO DIA*\nItens que se pagam sozinhos economizando tempo e delivery:\n\n${blocos.join("\n\n")}\n\n🧮 *Simule quanto sua casa economiza por mês:* ${urlSite}`;
+    }
+
+    const idx = Number(indiceOuModo) || 0;
+    const p = produtos[idx] || produtos[0];
+    if (!p) return "";
+
+    const linkAmz = formatarLinkAmazon(p.linkAmazon);
+    const linkMl = p.linkMercadoLivre;
+    const precoAtual = p.precoEstimado || 99;
+    const precoAntigo = p.precoAntigo || Math.round(precoAtual * 1.32);
+    const descPct = p.descontoPct || Math.round((1 - precoAtual / precoAntigo) * 100);
+    const horas = p.horasEconomizadasSemana || 2;
+    const econMes = p.economiaMensalReais || 120;
+
+    if (canal === "pinterest") {
+      return `TÍTULO DO PIN:\n${p.nome} Vale a Pena? Veja Quanto Economiza por Mês!\n\nDESCRIÇÃO SEO DO PIN:\n${p.descricao || p.nome}. Faixa média em oferta ~R$ ${precoAtual} (até ${descPct}% menor que R$ ${precoAntigo}). Economiza cerca de ${horas} horas por semana na rotina doméstica e até R$ ${econMes}/mês! Confira o comparativo completo e preço atualizado hoje.\n\nLINK DE DESTINO DO PIN:\n${linkAmz || linkMl || urlSite}\n\n#casainteligente #cozinhapratica #achadinhos #economia #organização`;
+    }
+
+    if (canal === "telegram") {
+      return `⚡ <b>${p.badge || "OFERTA DO DIA"} — ${p.nome}</b>\n\n📉 Ref. até R$ ${precoAntigo}\n🔥 <b>Faixa em oferta hoje: ~R$ ${precoAtual}</b> (até ${descPct}% OFF)\n\n💡 <b>Por que vale cada centavo:</b>\n• ${p.descricao || "Praticidade diária para quem trabalha fora."}\n• Economiza <b>~${horas}h/semana</b> e até <b>R$ ${econMes}/mês</b>\n\n🛒 <b>Confira o preço ao vivo nas lojas oficiais:</b>\n${linkAmz ? `👉 Amazon: ${linkAmz}\n` : ""}${linkMl ? `👉 Mercado Livre: ${linkMl}\n` : ""}\n🧭 Calculadora completa: ${urlSite}`;
+    }
+
+    // Default: WhatsApp
+    return `🔥 *${p.badge || "ACHADINHO DO DIA"}: ${p.nome}*\n\n❌ Preço comum: ~R$ ${precoAntigo}~\n✅ *Faixa em oferta hoje: ~R$ ${precoAtual}* _(até ${descPct}% menor)_\n\n⏱ Economiza *${horas}h toda semana* + *R$ ${econMes}/mês* na rotina!\n💬 _${p.descricao || "Ideal para quem trabalha fora e quer praticidade."}_\n\n🔍 *Consultar preço de hoje na loja oficial:*\n${linkAmz ? `🛒 *Amazon:* ${linkAmz}\n` : ""}${linkMl ? `⚡ *Mercado Livre:* ${linkMl}\n` : ""}\n🧮 *Calcule o retorno do seu Kit:* ${urlSite}`;
+  }
+
+  function atualizarGeradorPosts() {
+    const selProd = document.getElementById("gerador-produto-select");
+    const selCanal = document.getElementById("gerador-canal-select");
+    const txtOut = document.getElementById("gerador-texto-output");
+    if (!selProd || !selCanal || !txtOut) return;
+
+    const valorAtual = selProd.value || "0";
+    selProd.innerHTML =
+      `<option value="top3">🏆 Resumo: Top 3 Ofertas Campeãs do Dia</option>` +
+      produtos
+        .map((p, idx) => `<option value="${idx}">📦 ${p.nome} (~R$ ${p.precoEstimado})</option>`)
+        .join("");
+
+    if ([...selProd.options].some((o) => o.value === valorAtual)) {
+      selProd.value = valorAtual;
+    } else {
+      selProd.value = "0";
+    }
+
+    txtOut.value = gerarTextoOfertaSocial(selProd.value, selCanal.value);
+  }
+
   function atualizarTudo() {
     atualizarPlanejador();
     atualizarCalculadoraROI();
     atualizarVitrine();
     atualizarGuiasSeo();
     atualizarTabelaAdmin();
+    atualizarGeradorPosts();
   }
 
   document.addEventListener("DOMContentLoaded", () => {

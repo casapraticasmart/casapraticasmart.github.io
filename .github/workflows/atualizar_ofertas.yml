@@ -27,6 +27,6 @@ jobs:
         run: |
           git config user.name "Robo de Ofertas Automatico"
           git config user.email "robo@casapraticasmart.local"
-          git add produtos.js guias/ sitemap.xml robots.txt
+          git add produtos.js guias/ sitemap.xml robots.txt feed.xml
           git diff --staged --quiet || git commit -m "chore: atualizacao automatica de ofertas e paginas SEO do dia"
           git push
