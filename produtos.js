@@ -1,11 +1,11 @@
 // Arquivo gerado automaticamente pelo Robô Buscador de Ofertas
-// Última atualização: 12/11 às 18:26
+// Última atualização: 12/11 às 18:44
 
 window.CONFIG_LOJA = {
   "nomeSite": "Casa Prática & Smart",
   "subtitulo": "Curadoria de Casa Inteligente & Calculadora de Retorno",
-  "ultimaAtualizacaoRobo": "12/11 às 18:26",
-  "amazonTagAtiva": "SEU_ID_AMAZON-20"
+  "ultimaAtualizacaoRobo": "12/11 às 18:44",
+  "amazonTagAtiva": "alexandrevcm-20"
 };
 
 window.GUIAS_SEO = [
@@ -170,10 +170,10 @@ window.CATALOGO_INICIAL = [
       "tempo-cozinha",
       "economia-delivery"
     ],
-    "linkAmazon": "https://www.amazon.com.br/s?k=Fritadeira+Air+Fryer+Mondial+AFN-40-BI+4L&tag=SEU_ID_AMAZON-20",
-    "linkMercadoLivre": "https://lista.mercadolivre.com.br/fritadeira-air-fryer-mondial-afn-40-bi-4l",
+    "linkAmazon": "https://www.amazon.com.br/s?k=Fritadeira+Air+Fryer+Mondial+AFN-40-BI+4L&tag=alexandrevcm-20",
+    "linkMercadoLivre": "https://lista.mercadolivre.com.br/fritadeira-air-fryer-mondial-afn-40-bi-4l?matt_word=ALEXANDREVCM",
     "linkShopee": "https://shopee.com.br/search?keyword=Fritadeira+Air+Fryer+Mondial+AFN-40-BI+4L",
-    "atualizadoEm": "12/11 às 18:26"
+    "atualizadoEm": "12/11 às 18:44"
   },
   {
     "id": "robo-2",
@@ -206,10 +206,10 @@ window.CATALOGO_INICIAL = [
       "limpeza-automatica",
       "casa-smart"
     ],
-    "linkAmazon": "https://www.amazon.com.br/s?k=Robo+Aspirador+WAP+Robot+W90&tag=SEU_ID_AMAZON-20",
-    "linkMercadoLivre": "https://lista.mercadolivre.com.br/robo-aspirador-wap-robot-w90",
+    "linkAmazon": "https://www.amazon.com.br/s?k=Robo+Aspirador+WAP+Robot+W90&tag=alexandrevcm-20",
+    "linkMercadoLivre": "https://lista.mercadolivre.com.br/robo-aspirador-wap-robot-w90?matt_word=ALEXANDREVCM",
     "linkShopee": "https://shopee.com.br/search?keyword=Robo+Aspirador+WAP+Robot+W90",
-    "atualizadoEm": "12/11 às 18:26"
+    "atualizadoEm": "12/11 às 18:44"
   },
   {
     "id": "robo-3",
@@ -241,10 +241,10 @@ window.CATALOGO_INICIAL = [
       "casa-smart",
       "organizacao"
     ],
-    "linkAmazon": "https://www.amazon.com.br/s?k=Echo+Dot+5+geracao+Alexa&tag=SEU_ID_AMAZON-20",
-    "linkMercadoLivre": "https://lista.mercadolivre.com.br/echo-dot-5-geracao-alexa",
+    "linkAmazon": "https://www.amazon.com.br/s?k=Echo+Dot+5+geracao+Alexa&tag=alexandrevcm-20",
+    "linkMercadoLivre": "https://lista.mercadolivre.com.br/echo-dot-5-geracao-alexa?matt_word=ALEXANDREVCM",
     "linkShopee": "https://shopee.com.br/search?keyword=Echo+Dot+5+geracao+Alexa",
-    "atualizadoEm": "12/11 às 18:26"
+    "atualizadoEm": "12/11 às 18:44"
   },
   {
     "id": "robo-4",
@@ -277,10 +277,10 @@ window.CATALOGO_INICIAL = [
     "objetivos": [
       "limpeza-automatica"
     ],
-    "linkAmazon": "https://www.amazon.com.br/s?k=Mop+Spray+Fit+Flash+Limp+MOP8210&tag=SEU_ID_AMAZON-20",
-    "linkMercadoLivre": "https://lista.mercadolivre.com.br/mop-spray-fit-flash-limp-mop8210",
+    "linkAmazon": "https://www.amazon.com.br/s?k=Mop+Spray+Fit+Flash+Limp+MOP8210&tag=alexandrevcm-20",
+    "linkMercadoLivre": "https://lista.mercadolivre.com.br/mop-spray-fit-flash-limp-mop8210?matt_word=ALEXANDREVCM",
     "linkShopee": "https://shopee.com.br/search?keyword=Mop+Spray+Fit+Flash+Limp+MOP8210",
-    "atualizadoEm": "12/11 às 18:26"
+    "atualizadoEm": "12/11 às 18:44"
   },
   {
     "id": "robo-5",
@@ -311,10 +311,10 @@ window.CATALOGO_INICIAL = [
       "tempo-cozinha",
       "economia-delivery"
     ],
-    "linkAmazon": "https://www.amazon.com.br/s?k=Panela+de+Pressao+Eletrica+Electrolux+PCC20+6L&tag=SEU_ID_AMAZON-20",
-    "linkMercadoLivre": "https://lista.mercadolivre.com.br/panela-de-pressao-eletrica-electrolux-pcc20-6l",
+    "linkAmazon": "https://www.amazon.com.br/s?k=Panela+de+Pressao+Eletrica+Electrolux+PCC20+6L&tag=alexandrevcm-20",
+    "linkMercadoLivre": "https://lista.mercadolivre.com.br/panela-de-pressao-eletrica-electrolux-pcc20-6l?matt_word=ALEXANDREVCM",
     "linkShopee": "https://shopee.com.br/search?keyword=Panela+de+Pressao+Eletrica+Electrolux+PCC20+6L",
-    "atualizadoEm": "12/11 às 18:26"
+    "atualizadoEm": "12/11 às 18:44"
   },
   {
     "id": "robo-6",
@@ -346,10 +346,10 @@ window.CATALOGO_INICIAL = [
     "objetivos": [
       "casa-smart"
     ],
-    "linkAmazon": "https://www.amazon.com.br/s?k=Smart+Plug+Wi-Fi+Positivo+Casa+Inteligente&tag=SEU_ID_AMAZON-20",
-    "linkMercadoLivre": "https://lista.mercadolivre.com.br/smart-plug-wi-fi-positivo-casa-inteligente",
+    "linkAmazon": "https://www.amazon.com.br/s?k=Smart+Plug+Wi-Fi+Positivo+Casa+Inteligente&tag=alexandrevcm-20",
+    "linkMercadoLivre": "https://lista.mercadolivre.com.br/smart-plug-wi-fi-positivo-casa-inteligente?matt_word=ALEXANDREVCM",
     "linkShopee": "https://shopee.com.br/search?keyword=Smart+Plug+Wi-Fi+Positivo+Casa+Inteligente",
-    "atualizadoEm": "12/11 às 18:26"
+    "atualizadoEm": "12/11 às 18:44"
   },
   {
     "id": "robo-7",
@@ -382,10 +382,10 @@ window.CATALOGO_INICIAL = [
       "tempo-cozinha",
       "organizacao"
     ],
-    "linkAmazon": "https://www.amazon.com.br/s?k=Mini+Processador+Eletrico+USB+250ml+3+Laminas&tag=SEU_ID_AMAZON-20",
-    "linkMercadoLivre": "https://lista.mercadolivre.com.br/mini-processador-eletrico-usb-250ml-3-laminas",
+    "linkAmazon": "https://www.amazon.com.br/s?k=Mini+Processador+Eletrico+USB+250ml+3+Laminas&tag=alexandrevcm-20",
+    "linkMercadoLivre": "https://lista.mercadolivre.com.br/mini-processador-eletrico-usb-250ml-3-laminas?matt_word=ALEXANDREVCM",
     "linkShopee": "https://shopee.com.br/search?keyword=Mini+Processador+Eletrico+USB+250ml+3+Laminas",
-    "atualizadoEm": "12/11 às 18:26"
+    "atualizadoEm": "12/11 às 18:44"
   },
   {
     "id": "robo-8",
@@ -417,10 +417,10 @@ window.CATALOGO_INICIAL = [
       "organizacao",
       "economia-delivery"
     ],
-    "linkAmazon": "https://www.amazon.com.br/s?k=Kit+10+Potes+Hermeticos+Paramount+Lumini&tag=SEU_ID_AMAZON-20",
-    "linkMercadoLivre": "https://lista.mercadolivre.com.br/kit-10-potes-hermeticos-paramount-lumini",
+    "linkAmazon": "https://www.amazon.com.br/s?k=Kit+10+Potes+Hermeticos+Paramount+Lumini&tag=alexandrevcm-20",
+    "linkMercadoLivre": "https://lista.mercadolivre.com.br/kit-10-potes-hermeticos-paramount-lumini?matt_word=ALEXANDREVCM",
     "linkShopee": "https://shopee.com.br/search?keyword=Kit+10+Potes+Hermeticos+Paramount+Lumini",
-    "atualizadoEm": "12/11 às 18:26"
+    "atualizadoEm": "12/11 às 18:44"
   },
   {
     "id": "robo-9",
@@ -452,10 +452,10 @@ window.CATALOGO_INICIAL = [
     "objetivos": [
       "limpeza-automatica"
     ],
-    "linkAmazon": "https://www.amazon.com.br/s?k=Aspirador+Vertical+WAP+Silent+Speed+Max+1350W&tag=SEU_ID_AMAZON-20",
-    "linkMercadoLivre": "https://lista.mercadolivre.com.br/aspirador-vertical-wap-silent-speed-max-1350w",
+    "linkAmazon": "https://www.amazon.com.br/s?k=Aspirador+Vertical+WAP+Silent+Speed+Max+1350W&tag=alexandrevcm-20",
+    "linkMercadoLivre": "https://lista.mercadolivre.com.br/aspirador-vertical-wap-silent-speed-max-1350w?matt_word=ALEXANDREVCM",
     "linkShopee": "https://shopee.com.br/search?keyword=Aspirador+Vertical+WAP+Silent+Speed+Max+1350W",
-    "atualizadoEm": "12/11 às 18:26"
+    "atualizadoEm": "12/11 às 18:44"
   },
   {
     "id": "robo-10",
@@ -487,10 +487,10 @@ window.CATALOGO_INICIAL = [
       "tempo-cozinha",
       "economia-delivery"
     ],
-    "linkAmazon": "https://www.amazon.com.br/s?k=Cafeteira+Eletrica+Programavel+Electrolux+ECM25&tag=SEU_ID_AMAZON-20",
-    "linkMercadoLivre": "https://lista.mercadolivre.com.br/cafeteira-eletrica-programavel-electrolux-ecm25",
+    "linkAmazon": "https://www.amazon.com.br/s?k=Cafeteira+Eletrica+Programavel+Electrolux+ECM25&tag=alexandrevcm-20",
+    "linkMercadoLivre": "https://lista.mercadolivre.com.br/cafeteira-eletrica-programavel-electrolux-ecm25?matt_word=ALEXANDREVCM",
     "linkShopee": "https://shopee.com.br/search?keyword=Cafeteira+Eletrica+Programavel+Electrolux+ECM25",
-    "atualizadoEm": "12/11 às 18:26"
+    "atualizadoEm": "12/11 às 18:44"
   },
   {
     "id": "robo-11",
@@ -523,10 +523,10 @@ window.CATALOGO_INICIAL = [
       "organizacao",
       "economia-delivery"
     ],
-    "linkAmazon": "https://www.amazon.com.br/s?k=Seladora+a+Vacuo+Domestica+Bivolt&tag=SEU_ID_AMAZON-20",
-    "linkMercadoLivre": "https://lista.mercadolivre.com.br/seladora-a-vacuo-domestica-bivolt",
+    "linkAmazon": "https://www.amazon.com.br/s?k=Seladora+a+Vacuo+Domestica+Bivolt&tag=alexandrevcm-20",
+    "linkMercadoLivre": "https://lista.mercadolivre.com.br/seladora-a-vacuo-domestica-bivolt?matt_word=ALEXANDREVCM",
     "linkShopee": "https://shopee.com.br/search?keyword=Seladora+a+Vacuo+Domestica+Bivolt",
-    "atualizadoEm": "12/11 às 18:26"
+    "atualizadoEm": "12/11 às 18:44"
   },
   {
     "id": "robo-12",
@@ -558,9 +558,9 @@ window.CATALOGO_INICIAL = [
     "objetivos": [
       "casa-smart"
     ],
-    "linkAmazon": "https://www.amazon.com.br/s?k=Smart+Lampada+Wi-Fi+Positivo+Casa+Inteligente&tag=SEU_ID_AMAZON-20",
-    "linkMercadoLivre": "https://lista.mercadolivre.com.br/smart-lampada-wi-fi-positivo-casa-inteligente",
+    "linkAmazon": "https://www.amazon.com.br/s?k=Smart+Lampada+Wi-Fi+Positivo+Casa+Inteligente&tag=alexandrevcm-20",
+    "linkMercadoLivre": "https://lista.mercadolivre.com.br/smart-lampada-wi-fi-positivo-casa-inteligente?matt_word=ALEXANDREVCM",
     "linkShopee": "https://shopee.com.br/search?keyword=Smart+Lampada+Wi-Fi+Positivo+Casa+Inteligente",
-    "atualizadoEm": "12/11 às 18:26"
+    "atualizadoEm": "12/11 às 18:44"
   }
 ];

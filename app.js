@@ -1,6 +1,11 @@
 (function () {
-  const STORAGE_KEY = "casa_pratica_catalogo_v3_models";
+  const STORAGE_KEY = "casa_pratica_catalogo_v4_afiliados";
   const TAG_STORAGE_KEY = "casa_pratica_amazon_tag";
+
+  // Limpa tag placeholder antiga caso estivesse salva no navegador
+  if (localStorage.getItem(TAG_STORAGE_KEY) === "SEU_ID_AMAZON-20") {
+    localStorage.removeItem(TAG_STORAGE_KEY);
+  }
 
   let produtos = carregarProdutos();
   let categoriaAtiva = "todas";
@@ -207,7 +212,7 @@
     if (countEl) countEl.textContent = produtos.length;
     const tagInput = document.getElementById("admin-amazon-tag");
     if (tagInput) {
-      tagInput.value = localStorage.getItem(TAG_STORAGE_KEY) || "";
+      tagInput.value = localStorage.getItem(TAG_STORAGE_KEY) || (window.CONFIG_LOJA && window.CONFIG_LOJA.amazonTagAtiva) || "";
     }
 
     tbody.innerHTML = produtos

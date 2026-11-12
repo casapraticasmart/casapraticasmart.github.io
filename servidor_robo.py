@@ -69,6 +69,6 @@ class RoboHandler(http.server.SimpleHTTPRequestHandler):
 
 if __name__ == "__main__":
     socketserver.TCPServer.allow_reuse_address = True
-    with socketserver.TCPServer(("", PORT), RoboHandler) as httpd:
+    with socketserver.TCPServer(("127.0.0.1", PORT), RoboHandler) as httpd:
         print(f"Servidor + Robo de Ofertas rodando em http://localhost:{PORT}")
         httpd.serve_forever()
