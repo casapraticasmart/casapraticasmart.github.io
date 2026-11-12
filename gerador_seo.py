@@ -470,7 +470,7 @@ def gerar_html_guia(tema, produtos_guia, data_str):
 """
 
 
-def gerar_todas_paginas_seo(produtos, dominio_base="https://alexandrevcm.github.io/casa-pratica-smart"):
+def gerar_todas_paginas_seo(produtos, dominio_base="https://casapraticasmart.github.io"):
     GUIAS_DIR.mkdir(exist_ok=True)
     agora_str = datetime.now().strftime("%d/%m/%Y")
     guias_gerados = []
