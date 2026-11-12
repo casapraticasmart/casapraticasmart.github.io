@@ -518,8 +518,10 @@ def gerar_todas_paginas_seo(produtos, dominio_base="https://casapraticasmart.git
         preco_antigo = p.get("precoAntigo", int(preco_atual * 1.3))
         econ_mes = p.get("economiaMensalReais", 120)
         horas_sem = p.get("horasEconomizadasSemana", 2.5)
-        link_amz = html_lib.escape(p.get("linkAmazon") or f"{dominio_base}/index.html")
-        img_url = f"{dominio_base}/{p.get('imagem', 'img/airfryer.svg').lstrip('/')}"
+        link_item = html_lib.escape(f"{dominio_base}/index.html?item={p.get('id', 'oferta')}")
+        svg_rel = p.get("imagem", "img/airfryer.svg").lstrip("/")
+        png_rel = svg_rel.replace(".svg", ".png") if svg_rel.endswith(".svg") else "img/airfryer.png"
+        img_url = f"{dominio_base}/{png_rel}"
         desc_texto = (
             f"🔥 Faixa média em oferta: ~R$ {preco_atual} (ref. até R$ {preco_antigo}). "
             f"Economiza ~{horas_sem}h/semana e até R$ {econ_mes}/mês no orçamento doméstico. "
@@ -530,18 +532,27 @@ def gerar_todas_paginas_seo(produtos, dominio_base="https://casapraticasmart.git
         rss_items.append(
             f"    <item>\n"
             f"      <title>{nome_esc} (~R$ {preco_atual})</title>\n"
-            f"      <link>{link_amz}</link>\n"
+            f"      <link>{link_item}</link>\n"
             f"      <guid isPermaLink=\"false\">{guid_id}</guid>\n"
             f"      <pubDate>{pub_date}</pubDate>\n"
             f"      <description>{desc_esc}</description>\n"
-            f"      <enclosure url=\"{html_lib.escape(img_url)}\" type=\"image/svg+xml\" length=\"4096\" />\n"
+            f"      <enclosure url=\"{html_lib.escape(img_url)}\" type=\"image/png\" length=\"15000\" />\n"
             f"    </item>"
         )
 
-    for g in guias_gerados:
+    imgs_ciclo = [
+        "img/airfryer.png",
+        "img/robo-aspirador.png",
+        "img/mop-spray.png",
+        "img/mini-processador.png",
+        "img/panela-pressao.png",
+        "img/echo-dot.png",
+    ]
+    for idx_g, g in enumerate(guias_gerados):
         titulo_esc = html_lib.escape(g["titulo"])
         url_guia = f"{dominio_base}/{g['url_relativa']}"
         resumo_esc = html_lib.escape(f"{g['resumo']} Veredito: {g['veredito']}")
+        img_guia = f"{dominio_base}/{imgs_ciclo[idx_g % len(imgs_ciclo)]}"
         rss_items.append(
             f"    <item>\n"
             f"      <title>{titulo_esc}</title>\n"
@@ -549,6 +560,7 @@ def gerar_todas_paginas_seo(produtos, dominio_base="https://casapraticasmart.git
             f"      <guid isPermaLink=\"true\">{url_guia}</guid>\n"
             f"      <pubDate>{pub_date}</pubDate>\n"
             f"      <description>{resumo_esc}</description>\n"
+            f"      <enclosure url=\"{html_lib.escape(img_guia)}\" type=\"image/png\" length=\"15000\" />\n"
             f"    </item>"
         )
 
