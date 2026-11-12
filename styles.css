@@ -720,3 +720,214 @@ body {
   border: none;
   font-size: 0.78rem;
 }
+
+/* ==========================================================================
+   MICRO-INTERAÇÕES, PULSOS E MOVIMENTO DE VAREJO AO VIVO
+   ========================================================================== */
+@keyframes livePulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.75);
+    transform: scale(1);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(34, 197, 94, 0);
+    transform: scale(1.12);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+    transform: scale(1);
+  }
+}
+
+@keyframes shimmerSweep {
+  0% {
+    transform: translateX(-140%) skewX(-20deg);
+  }
+  35%, 100% {
+    transform: translateX(240%) skewX(-20deg);
+  }
+}
+
+@keyframes tickerScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes cardFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes softFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+.live-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.76rem;
+  color: #e2e8f0;
+}
+
+.live-status-pill strong {
+  color: #4ade80;
+  letter-spacing: 0.03em;
+}
+
+.live-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #22c55e;
+  display: inline-block;
+  animation: livePulse 1.8s infinite;
+  flex-shrink: 0;
+}
+
+.promo-ticker-bar {
+  background: linear-gradient(90deg, #ff9900, #ff7733, #ff9900);
+  color: #111111;
+  font-size: 0.78rem;
+  font-weight: 500;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 5px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.promo-ticker-track {
+  display: inline-flex;
+  gap: 42px;
+  padding-left: 16px;
+  animation: tickerScroll 34s linear infinite;
+}
+
+.promo-ticker-bar:hover .promo-ticker-track {
+  animation-play-state: paused;
+}
+
+.brand-logo {
+  position: relative;
+  overflow: hidden;
+}
+
+.brand-logo::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 45%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+  animation: shimmerSweep 5s infinite;
+}
+
+.panel.active {
+  animation: cardFadeUp 0.25s ease-out;
+}
+
+.product-card {
+  animation: cardFadeUp 0.32s ease-out backwards;
+  transition: box-shadow 0.22s ease, transform 0.22s ease, border-color 0.22s ease;
+}
+
+.product-card:nth-child(2) { animation-delay: 0.04s; }
+.product-card:nth-child(3) { animation-delay: 0.08s; }
+.product-card:nth-child(4) { animation-delay: 0.12s; }
+
+.product-card:hover {
+  transform: translateY(-4px);
+  border-color: #cbd5e1;
+}
+
+.product-img {
+  transition: transform 0.28s ease;
+}
+
+.product-card:hover .product-img {
+  transform: scale(1.07);
+}
+
+.retail-badge.laranja {
+  position: relative;
+  overflow: hidden;
+}
+
+.retail-badge.laranja::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+  animation: shimmerSweep 4s infinite;
+}
+
+.full-tag {
+  animation: softFloat 2.4s ease-in-out infinite;
+}
+
+.btn-main-offer {
+  position: relative;
+  overflow: hidden;
+  transition: background 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn-main-offer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 35%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.28), transparent);
+  animation: shimmerSweep 4.5s infinite;
+}
+
+.btn-main-offer:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(52, 131, 250, 0.35);
+}
+
+.btn-whatsapp {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn-whatsapp:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(22, 163, 74, 0.35);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .live-dot,
+  .promo-ticker-track,
+  .brand-logo::after,
+  .retail-badge.laranja::after,
+  .btn-main-offer::after,
+  .full-tag,
+  .product-card,
+  .panel.active {
+    animation: none !important;
+  }
+}
