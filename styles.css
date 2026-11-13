@@ -919,6 +919,52 @@ body {
   box-shadow: 0 4px 12px rgba(22, 163, 74, 0.35);
 }
 
+.telegram-cta-banner {
+  margin-top: 28px;
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+  color: #ffffff;
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  border: 1px solid #3b82f6;
+}
+
+.telegram-cta-banner h3 {
+  font-size: 1.08rem;
+  margin-bottom: 4px;
+}
+
+.telegram-cta-banner p {
+  font-size: 0.85rem;
+  color: #cbd5e1;
+  margin: 0;
+}
+
+.btn-telegram-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #0088cc;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.88rem;
+  padding: 11px 18px;
+  border-radius: 6px;
+  white-space: nowrap;
+  transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn-telegram-cta:hover {
+  background: #0077b5;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 136, 204, 0.4);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .live-dot,
   .promo-ticker-track,

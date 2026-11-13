@@ -609,5 +609,66 @@
     }
 
     atualizarTudo();
+    iniciarRastreamentoConversao();
   });
+
+  function iniciarRastreamentoConversao() {
+    const cfg = window.CONFIG_LOJA || {};
+    const ga4Id = (cfg.ga4Id || "").trim();
+    const pixelId = (cfg.metaPixelId || "").trim();
+
+    if (ga4Id) {
+      const s = document.createElement("script");
+      s.async = true;
+      s.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(ga4Id)}`;
+      document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      window.gtag("js", new Date());
+      window.gtag("config", ga4Id);
+    }
+
+    if (pixelId) {
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+      window.fbq("init", pixelId);
+      window.fbq("track", "PageView");
+    }
+
+    document.addEventListener("click", (e) => {
+      const link = e.target.closest("a");
+      if (!link) return;
+      const isAfiliado = link.classList.contains("btn-main-offer") || link.classList.contains("btn-mini-store");
+      const isTelegram = link.getAttribute("data-track") === "telegram-join";
+
+      if (isAfiliado) {
+        const loja = link.classList.contains("ml") ? "MercadoLivre" : link.classList.contains("shp") ? "Shopee" : "Amazon";
+        if (typeof window.gtag === "function") {
+          window.gtag("event", "click_afiliado", { loja, url: link.href });
+        }
+        if (typeof window.fbq === "function") {
+          window.fbq("trackCustom", "ClickAfiliado", { loja });
+        }
+      } else if (isTelegram) {
+        if (typeof window.gtag === "function") {
+          window.gtag("event", "join_telegram_click");
+        }
+        if (typeof window.fbq === "function") {
+          window.fbq("track", "Lead", { content_name: "Canal Telegram" });
+        }
+      }
+    });
+  }
 })();

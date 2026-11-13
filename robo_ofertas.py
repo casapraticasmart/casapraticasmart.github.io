@@ -442,7 +442,9 @@ def executar_robo(quantidade=12, tentar_api_ao_vivo=False):
         "nomeSite": "Casa Prática & Smart",
         "subtitulo": "Curadoria de Casa Inteligente & Calculadora de Retorno",
         "ultimaAtualizacaoRobo": agora_str,
-        "amazonTagAtiva": cfg.get("amazon_tag", "SEU_ID_AMAZON-20")
+        "amazonTagAtiva": cfg.get("amazon_tag", "SEU_ID_AMAZON-20"),
+        "ga4Id": (cfg.get("ga4_id") or "").strip(),
+        "metaPixelId": (cfg.get("meta_pixel_id") or "").strip()
     }
 
     guias_seo = gerador_seo.gerar_todas_paginas_seo(catalogo_gerado)
