@@ -617,7 +617,7 @@
     const ga4Id = (cfg.ga4Id || "").trim();
     const pixelId = (cfg.metaPixelId || "").trim();
 
-    if (ga4Id) {
+    if (ga4Id && typeof window.gtag !== "function") {
       const s = document.createElement("script");
       s.async = true;
       s.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(ga4Id)}`;
