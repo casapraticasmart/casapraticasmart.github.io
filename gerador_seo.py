@@ -295,7 +295,7 @@ def selecionar_produtos_para_guia(produtos, tema):
     return escolhidos[:4]
 
 
-def gerar_html_guia(tema, produtos_guia, data_str):
+def gerar_html_guia(tema, produtos_guia, data_str, ga4_id=""):
     faq_schema = {
         "@context": "https://schema.org",
         "@type": "FAQPage",
@@ -403,7 +403,21 @@ def gerar_html_guia(tema, produtos_guia, data_str):
   <link rel="stylesheet" href="../styles.css" />
   <script type="application/ld+json">
 {json.dumps(faq_schema, indent=2, ensure_ascii=False)}
-  </script>
+  </script>{f'''
+  <script async src="https://www.googletagmanager.com/gtag/js?id={ga4_id}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){{dataLayer.push(arguments);}}
+    gtag('js', new Date());
+    gtag('config', '{ga4_id}');
+    document.addEventListener('click', function(e) {{
+      var a = e.target.closest('a');
+      if (!a) return;
+      if (a.classList.contains('btn-main-offer') || a.classList.contains('btn-mini-store')) {{
+        gtag('event', 'click_afiliado', {{ url: a.href }});
+      }}
+    }});
+  </script>''' if ga4_id else ''}
 </head>
 <body>
   <header class="hero">
@@ -475,14 +489,14 @@ def gerar_html_guia(tema, produtos_guia, data_str):
 """
 
 
-def gerar_todas_paginas_seo(produtos, dominio_base="https://casapraticasmart.github.io"):
+def gerar_todas_paginas_seo(produtos, dominio_base="https://casapraticasmart.github.io", ga4_id=""):
     GUIAS_DIR.mkdir(exist_ok=True)
     agora_str = datetime.now().strftime("%d/%m/%Y")
     guias_gerados = []
 
     for tema in TEMAS_COMPARATIVOS_SEO:
         prods_guia = selecionar_produtos_para_guia(produtos, tema)
-        html = gerar_html_guia(tema, prods_guia, agora_str)
+        html = gerar_html_guia(tema, prods_guia, agora_str, ga4_id=ga4_id)
         arquivo_path = GUIAS_DIR / f"{tema['slug']}.html"
         arquivo_path.write_text(html, encoding="utf-8")
         guias_gerados.append({

@@ -447,7 +447,10 @@ def executar_robo(quantidade=12, tentar_api_ao_vivo=False):
         "metaPixelId": (cfg.get("meta_pixel_id") or "").strip()
     }
 
-    guias_seo = gerador_seo.gerar_todas_paginas_seo(catalogo_gerado)
+    guias_seo = gerador_seo.gerar_todas_paginas_seo(
+        catalogo_gerado,
+        ga4_id=(cfg.get("ga4_id") or "").strip()
+    )
 
     conteudo_js = (
         "// Arquivo gerado automaticamente pelo Robô Buscador de Ofertas\n"
